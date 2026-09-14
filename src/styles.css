@@ -1,1 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+/* Rolagem suave ao clicar nos links âncora do header/footer */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Compensa a altura do header fixo ao rolar até uma section */
+:where(section[id], main[id]) {
+  scroll-margin-top: 6rem;
+}
+
+/* Transição suave ao trocar o passo em "Como funciona" */
+@keyframes stepIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-step-in {
+  animation: stepIn 0.35s ease-out both;
+}
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-step-in {
+    animation: none;
+  }
+}
